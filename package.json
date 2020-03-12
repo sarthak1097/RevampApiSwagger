@@ -1,0 +1,22 @@
+{
+  "name": "swagger-setup-demo",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "swagger": "js-yaml ./api/swagger/swagger.yaml > swagger.json",
+    "start": "npm run swagger && node ./bin/www",
+    "swagger:edit": "swagger project edit"
+  },
+  "dependencies": {
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "swagger-ui-express": "^4.0.1"
+  },
+  "devDependencies": {
+    "js-yaml": "^3.12.0",
+    "swagger": "^0.7.5",
+    "swagger-editor": "^3.6.11"
+  }
+}

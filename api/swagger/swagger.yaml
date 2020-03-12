@@ -1,0 +1,124 @@
+---
+swagger: "2.0"
+info:
+  # description: "This is the sample server Petstore server bro.  You can find out more about\
+  #   \ Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).\
+  #   \  For this sample, you can use the api key `special-key` to test the authorization\
+  #   \ filters."
+  
+  title: "Revamp api"
+  
+ 
+host: "s0n2t8grya.execute-api.ap-south-1.amazonaws.com/rewamp-api/"
+# basePath: "/v2"
+tags:
+Access-Control-Allow-Origin: " https://s0n2t8grya.execute-api.ap-south-1.amazonaws.com/rewamp-api/"
+Access-Control-Allow-Methods: GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH
+Access-Control-Allow-Headers: Content-Type
+schemes:
+- "https"
+- "http"
+Authorization: Bearer <token>
+paths:
+  
+  /getapisync:
+    get:
+      tags:
+      - " Api sync "
+      summary: "sync api"
+      description: ""
+      # operationId: "loginUser"
+      produces:
+    
+      - "application/json"
+      securityDefinitions:
+        bearerAuth:
+          type: http
+          in: header
+          name: Authorization
+          scheme: bearer
+          bearerFormat: JWT
+          description: Enter your bearer token in the format **Bearer &lt;token>**
+      security:
+       - bearerAuth: []
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+          headers:
+            X-Rate-Limit:
+              type: "integer"
+              format: "int32"
+              description: "calls per hour allowed by the user"
+            X-Expires-After:
+              type: "string"
+              format: "date-time"
+              description: "date in UTC when token expires"
+        400:
+          description: "Invalid username/password supplied"
+    
+  
+  /postapisync:
+    post:
+      tags:
+      - "Api sync"
+      summary: "api sync"
+      description: ""
+      operationId: "addPet"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      security:
+       - bearerAuth: [] 
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Pet object that needs to be added to the store"
+        required: true
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+          headers:
+            X-Rate-Limit:
+              type: "integer"
+              format: "int32"
+              description: "calls per hour allowed by the user"
+            X-Expires-After:
+              type: "string"
+              format: "date-time"
+              description: "date in UTC when token expires"
+        400:
+          description: "Invalid username/password supplied"
+         
+       
+
+
+
+securityDefinitions:
+  bearerAuth:
+    type: apiKey
+    in: header
+    name: Authorization
+    description: Enter your bearer token in the format **Bearer &lt;token>**
+
+      
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+          
